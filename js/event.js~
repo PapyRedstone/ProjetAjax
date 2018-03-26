@@ -1,0 +1,3 @@
+'use strict';
+
+ajaxRequest('GET','127.0.0.1',function(txt){$("#test").html(txt);});
