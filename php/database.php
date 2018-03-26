@@ -6,8 +6,8 @@
 
 	      public function __construct(){
 	      	     global $host,$port,$dbname,$user,$password;
-	      	     $this->db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=UTF8;",$user,$password);
-	     }
+                 $this->db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=UTF8;",$user,$password);
+          }
 
 	     public function getDB(){
 	     	     return $this->db;

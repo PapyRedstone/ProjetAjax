@@ -1,13 +1,11 @@
 'use strict';
 
 function httpError(errorCode){
-    var err = document.getElementById("errors");
-    $("div#errors").addClass("alert alert-danger");
-    err.innerHTML = errorCode;
+    $("div#error").addClass("alert alert-danger");
+    $("div#error").html(errorCode);
 }
 
 function ajaxRequest(type, request, callback, data = null){
-    alert("ajax");
     var xhr;
 
     xhr = new XMLHttpRequest();
@@ -22,9 +20,9 @@ function ajaxRequest(type, request, callback, data = null){
 	case 201:
 	    callback(xhr.responseText);
 	    break;
-	 
+	    
 	default:
-	    callback(xhr.status)
+	    httpError(xhr.status);
 	    break;
 	}
     }
