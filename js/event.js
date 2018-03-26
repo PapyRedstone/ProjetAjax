@@ -1,7 +1,9 @@
 'use strict';
 
 function callback(txt){
-    console.log(txt);
+    document.getElementById("test").innerHTML = txt;
+    alert("Bonjour");
 }
-
-ajaxRequest('GET','127.0.0.1/request.php',callback);
+document.onload = function(){
+    ajaxRequest('GET','projetajax.fr/php/request.php',callback);
+}

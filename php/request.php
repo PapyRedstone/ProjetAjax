@@ -3,6 +3,7 @@
 	header('Cache-control: no-store, no-cache, must-revalidate');
 	header('Pragma: no-cache');
 	header('HTTP/1.1 200 OK');
-	echo json_encode($_GET);
+/*	echo json_encode($_GET);*/
+	echo "COUCOU";
 	exit();
 ?>

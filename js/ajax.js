@@ -7,6 +7,7 @@ function httpError(errorCode){
 }
 
 function ajaxRequest(type, request, callback, data = null){
+    alert("ajax");
     var xhr;
 
     xhr = new XMLHttpRequest();
