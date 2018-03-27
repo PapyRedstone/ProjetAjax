@@ -18,19 +18,35 @@ $requestRessourceNumber = array_shift($request);
 
 switch($requestType){
  case "GET":
-   header('HTTP/1.1 200 OK');
    switch($requestRessource){
-   case "chat":
-     echo json_encode($db->execute("SELECT c.text,u.userName FROM chat as c, user as u WHERE u.id_user = c.id_user"));
-     exit();
-     break;
-
    case "image":
+     header('HTTP/1.1 200 OK');
      if(isset($requestRessourceNumber)){
-       echo json_encode($db->execute("SELECT pathLarge FROM images WHERE id = ".$requestRessourceNumber));
+       echo json_encode($db->execute("SELECT pathLarge FROM images WHERE id_photo = ".$requestRessourceNumber));
      }else{
        echo json_encode($db->execute("SELECT pathSmall FROM images"));
      }
+     exit();
+     break;
+
+   case "comment":
+     header('HTTP/1.1 200 OK');
+     echo json_encode($db->execute("SELECT c.text,u.userName FROM comment as c,user as u WHERE c.id_user = u.id_user AND c.id_photo = $requestRessourceNumber"));
+     exit();
+     break;
+
+   default:
+     header('HTTP/1.1 501 Not Implemented');
+     exit();
+   }
+   break;
+
+ case "PUT":
+   parse_str(file_get_contents("php://input"),$_PUT);
+   switch($requestRessource){
+   case "comment":
+     header('HTTP/1.1 200 OK');
+     var_dump($_PUT);
      exit();
      break;
    }
@@ -38,5 +54,6 @@ switch($requestType){
 }
 
 header('HTTP/1.1 501 Not Implemented');
+//header('HTTP/1.1 200 OK');
 exit();
 ?>

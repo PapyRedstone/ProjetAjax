@@ -9,10 +9,15 @@ function ajaxRequest(type, request, callback, data = null){
     var xhr;
 
     xhr = new XMLHttpRequest();
-    if(data != null){
+    if((type == 'GET' || type == 'DELETE') && data != null){
 	request += '?' + data;
+	data = null;
     }
     xhr.open(type, request, true);
+
+    if(type == "POST" || type == "PUT"){
+	xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    }
     
     xhr.onload = function(){
 	switch(xhr.status){
