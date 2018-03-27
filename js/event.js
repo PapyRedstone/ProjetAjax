@@ -7,5 +7,5 @@ function callback(txt){
 
 window.onload = function (){
     ajaxRequest('GET','/php/request.php/chat',callback);
-//    ajaxRequest('GET','/php/request.php/image',callback);
+    ajaxRequest('GET','/php/request.php/image/1',callback);
 }

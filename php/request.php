@@ -15,7 +15,6 @@ $request = substr($_SERVER['PATH_INFO'], 1);
 $request = explode('/', $request);
 $requestRessource = array_shift($request);
 $requestRessourceNumber = array_shift($request);
-error_log("".$requestRessourceNumber);
 
 switch($requestType){
  case "GET":
@@ -23,16 +22,19 @@ switch($requestType){
    switch($requestRessource){
    case "chat":
      echo json_encode($db->execute("SELECT c.text,u.userName FROM chat as c, user as u WHERE u.id_user = c.id_user"));
+     exit();
+     break;
 
    case "image":
-     //var_dump($requestRessourceNumber);
      if(isset($requestRessourceNumber)){
-       echo json_encode($db->execute("SELECT pathLarge FROM image WHERE id = $requestRessourceNumber"));
+       echo json_encode($db->execute("SELECT pathLarge FROM images WHERE id = ".$requestRessourceNumber));
      }else{
-       echo json_encode($db->execute("SELECT pathSmall FROM image"));
+       echo json_encode($db->execute("SELECT pathSmall FROM images"));
      }
+     exit();
+     break;
    }
-   exit();
+   break;
 }
 
 header('HTTP/1.1 501 Not Implemented');
