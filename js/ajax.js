@@ -9,7 +9,7 @@ function ajaxRequest(type, request, callback, data = null){
     var xhr;
 
     xhr = new XMLHttpRequest();
-    if(type == 'GET' && data != null){
+    if(data != null){
 	request += '?' + data;
     }
     xhr.open(type, request, true);
