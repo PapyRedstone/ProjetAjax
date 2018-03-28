@@ -1,0 +1,8 @@
+body{
+    margin-top: 2% !important;
+    background-color: rgb(245, 245, 245) !important;
+}
+
+textarea {
+    resize: none;
+}
