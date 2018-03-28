@@ -16,6 +16,8 @@ $request = explode('/', $request);
 $requestRessource = array_shift($request);
 $requestRessourceNumber = array_shift($request);
 
+var_dump($_SERVER['REQUEST_URI']);
+
 switch($requestType){
  case "GET":
    switch($requestRessource){
@@ -46,11 +48,8 @@ switch($requestType){
    switch($requestRessource){
    case "comment":
      header('HTTP/1.1 200 OK');
-     $data[] = $_PUT["text"];
-     $data[] = $_PUT["login"];
-     $data[] = $requestRessourceNumber;
      var_dump($data);
-     echo $db->execute("UPDATE comment as c, user as u SET c.text = ? WHERE u.userName = ? AND c.id_user = u.id_user AND c.id_comment = ?",$data);
+     echo $db->execute("UPDATE comment as c, user as u SET c.text = :text WHERE u.userName = :login AND c.id_user = u.id_user AND c.id_comment = :com",array('text'=>$_PUT['text'],'login'=>$_PUT['login'],'com'=>$requestRessourceNumber));
      //echo $db->execute("UPDATE comment as c, user as u SET c.text = 'SLT' WHERE u.userName = 'alex' AND c.id_user = u.id_user AND c.id_comment = 1");
      /*
      var_dump($_PUT);
