@@ -6,3 +6,7 @@ body{
 textarea {
     resize: none;
 }
+
+div#feed{
+    background-color: white;
+}
