@@ -34,10 +34,6 @@ switch($requestType){
      echo json_encode($db->execute("SELECT c.text,u.userName FROM comment as c,user as u WHERE c.id_user = u.id_user AND c.id_photo = $requestRessourceNumber"));
      exit();
      break;
-
-   default:
-     header('HTTP/1.1 501 Not Implemented');
-     exit();
    }
    break;
 
@@ -69,8 +65,21 @@ switch($requestType){
      break;
    }
    break;
+
+ case 'DELETE':
+   switch($requestRessource){
+   case "comment":
+     header('HTTP/1.1 200 OK');
+     var_dump($_DELETE);
+     parse_str(file_get_contents("php://input"),$_DELETE);
+     var_dump($_DELETE);
+     exit();
+     break;
+   }
+   break;
 }
 
 header('HTTP/1.1 501 Not Implemented');
+//header('HTTP/1.1 200 OK');
 exit();
 ?>
