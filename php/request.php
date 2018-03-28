@@ -46,7 +46,18 @@ switch($requestType){
    switch($requestRessource){
    case "comment":
      header('HTTP/1.1 200 OK');
-     echo $db->execute("UPDATE comment as c, user as u SET c.text = :text WHERE u.userName = :login AND c.id_user = u.id_user AND c.id_comment = :com",array('text'=>$_PUT['text'],'login'=>$_PUT['login'],'com'=>$requestRessourceNumber));
+     $db->execute("UPDATE comment as c, user as u SET c.text = :text WHERE u.userName = :login AND c.id_user = u.id_user AND c.id_comment = :com",array('text'=>$_PUT['text'],'login'=>$_PUT['login'],'com'=>$requestRessourceNumber));
+     exit();
+     break;
+   }
+   break;
+
+ case "POST":
+   switch($requestRessource){
+   case "comment":
+     header('HTTP/1.1 200 OK');
+     $r = $db->execute("SELECT * FROM user WHERE userName = '".$_POST['login']."'")[0];
+     $db->execute('INSERT INTO comment VALUES (NULL, :text, :idU, :idp)',array('text'=>$_POST['text'],'idU'=>$r['id_user'],'idp'=>$_POST['id_photo']));
      exit();
      break;
    }
