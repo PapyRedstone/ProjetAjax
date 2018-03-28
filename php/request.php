@@ -22,9 +22,9 @@ switch($requestType){
    case "image":
      header('HTTP/1.1 200 OK');
      if(isset($requestRessourceNumber)){
-       echo json_encode($db->execute("SELECT pathLarge FROM images WHERE id_photo = ".$requestRessourceNumber));
+       echo json_encode($db->execute("SELECT * FROM images WHERE id_photo = ".$requestRessourceNumber));
      }else{
-       echo json_encode($db->execute("SELECT pathSmall FROM images"));
+       echo json_encode($db->execute("SELECT * FROM images"));
      }
      exit();
      break;
@@ -50,7 +50,7 @@ switch($requestType){
      $data[] = $_PUT["login"];
      $data[] = $requestRessourceNumber;
      var_dump($data);
-     echo $db->execute("UPDATE comment as c, user as u SET c.text = ? WHERE u.userName = ?' AND c.id_user = u.id_user AND c.id_comment = ?",$data);
+     echo $db->execute("UPDATE comment as c, user as u SET c.text = ? WHERE u.userName = ? AND c.id_user = u.id_user AND c.id_comment = ?",$data);
      //echo $db->execute("UPDATE comment as c, user as u SET c.text = 'SLT' WHERE u.userName = 'alex' AND c.id_user = u.id_user AND c.id_comment = 1");
      /*
      var_dump($_PUT);
