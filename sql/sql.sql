@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 27 Mars 2018 à 10:08
+-- Généré le :  Mer 28 Mars 2018 à 08:29
 -- Version du serveur :  5.7.21-0ubuntu0.17.10.1
 -- Version de PHP :  7.1.15-0ubuntu0.17.10.1
 
@@ -38,7 +38,7 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id_comment`, `text`, `id_user`, `id_photo`) VALUES
-(1, 'belle photo', 1, 0),
+(1, 'SLT', 1, 0),
 (2, 'elle est moche', 2, 1);
 
 -- --------------------------------------------------------
@@ -48,18 +48,18 @@ INSERT INTO `comment` (`id_comment`, `text`, `id_user`, `id_photo`) VALUES
 --
 
 CREATE TABLE `images` (
-  `id_photo` int(11) NOT NULL,
-  `pathSmall` text CHARACTER SET utf8,
-  `pathLarge` text CHARACTER SET utf8
+  `id_photo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `images`
 --
 
-INSERT INTO `images` (`id_photo`, `pathSmall`, `pathLarge`) VALUES
-(0, 'img/small/img1.png', 'img/large/img1.png'),
-(1, 'img/small/img2.png', 'img/large/img2.png');
+INSERT INTO `images` (`id_photo`) VALUES
+(1),
+(2),
+(3),
+(4);
 
 -- --------------------------------------------------------
 
@@ -116,10 +116,15 @@ ALTER TABLE `user`
 ALTER TABLE `comment`
   MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT pour la table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
