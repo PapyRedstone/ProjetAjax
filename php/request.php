@@ -59,7 +59,6 @@ switch($requestType){
 
    case "user":
      header('HTTP/1.1 200 OK');
-     var_dump($_POST);
      $db->execute('INSERT INTO user VALUES (NULL, :name, :pass)',array('name'=>$_POST['login'],'pass'=>$_POST['password']));
      exit();
      break;
@@ -67,12 +66,26 @@ switch($requestType){
    break;
 
  case 'DELETE':
+   $_DELETE = $_GET;
    switch($requestRessource){
    case "comment":
      header('HTTP/1.1 200 OK');
-     var_dump($_DELETE);
-     parse_str(file_get_contents("php://input"),$_DELETE);
-     var_dump($_DELETE);
+     $r = $db->execute("SELECT c.id_comment FROM user as u, comment as c WHERE u.userName = '".$_DELETE['login']."' AND c.id_user = u.id_user");
+     foreach($r as $table){
+       if($requestRessourceNumber == $table['id_comment']){
+         $db->execute("DELETE FROM comment WHERE id_comment = :id",array('id'=>$table['id_comment']));
+       }
+     }
+     exit();
+     break;
+
+   case "user":
+     header('HTTP/1.1 200 OK');
+     $r = $db->execute("SELECT c.id_comment FROM user as u, comment as c WHERE u.userName = '".$_DELETE['login']."' AND c.id_user = u.id_user");
+     foreach($r as $table){
+       $db->execute("DELETE FROM comment WHERE id_comment = :id",array('id'=>$table['id_comment']));
+     }
+     $db->execute("DELETE FROM user WHERE userName = :name",array('name'=>$_DELETE['login']));     
      exit();
      break;
    }
