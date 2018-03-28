@@ -7,7 +7,7 @@ function callback(txt){
 
 window.onload = function (){
     //En cours de test
-
+    
 
     //OK
     //ajaxRequest('POST','/php/request.php/user',callback,'login=azerty&password=azerty');

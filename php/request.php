@@ -60,11 +60,17 @@ switch($requestType){
      $db->execute('INSERT INTO comment VALUES (NULL, :text, :idU, :idp)',array('text'=>$_POST['text'],'idU'=>$r['id_user'],'idp'=>$_POST['id_photo']));
      exit();
      break;
+
+   case "user":
+     header('HTTP/1.1 200 OK');
+     var_dump($_POST);
+     $db->execute('INSERT INTO user VALUES (NULL, :name, :pass)',array('name'=>$_POST['login'],'pass'=>$_POST['password']));
+     exit();
+     break;
    }
    break;
 }
 
 header('HTTP/1.1 501 Not Implemented');
-//header('HTTP/1.1 200 OK');
 exit();
 ?>
