@@ -34,10 +34,6 @@ switch($requestType){
      echo json_encode($db->execute("SELECT c.text,u.userName FROM comment as c,user as u WHERE c.id_user = u.id_user AND c.id_photo = $requestRessourceNumber"));
      exit();
      break;
-
-   default:
-     header('HTTP/1.1 501 Not Implemented');
-     exit();
    }
    break;
 
@@ -63,8 +59,33 @@ switch($requestType){
 
    case "user":
      header('HTTP/1.1 200 OK');
-     var_dump($_POST);
      $db->execute('INSERT INTO user VALUES (NULL, :name, :pass)',array('name'=>$_POST['login'],'pass'=>$_POST['password']));
+     exit();
+     break;
+   }
+   break;
+
+ case 'DELETE':
+   $_DELETE = $_GET;
+   switch($requestRessource){
+   case "comment":
+     header('HTTP/1.1 200 OK');
+     $r = $db->execute("SELECT c.id_comment FROM user as u, comment as c WHERE u.userName = '".$_DELETE['login']."' AND c.id_user = u.id_user");
+     foreach($r as $table){
+       if($requestRessourceNumber == $table['id_comment']){
+         $db->execute("DELETE FROM comment WHERE id_comment = :id",array('id'=>$table['id_comment']));
+       }
+     }
+     exit();
+     break;
+
+   case "user":
+     header('HTTP/1.1 200 OK');
+     $r = $db->execute("SELECT c.id_comment FROM user as u, comment as c WHERE u.userName = '".$_DELETE['login']."' AND c.id_user = u.id_user");
+     foreach($r as $table){
+       $db->execute("DELETE FROM comment WHERE id_comment = :id",array('id'=>$table['id_comment']));
+     }
+     $db->execute("DELETE FROM user WHERE userName = :name",array('name'=>$_DELETE['login']));     
      exit();
      break;
    }
@@ -72,5 +93,6 @@ switch($requestType){
 }
 
 header('HTTP/1.1 501 Not Implemented');
+//header('HTTP/1.1 200 OK');
 exit();
 ?>
