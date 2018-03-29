@@ -48,7 +48,7 @@ form>a:active{
     color: white;
 }
 
-input#password{
+input#authPassword{
     margin-right: 5px;
 }
 

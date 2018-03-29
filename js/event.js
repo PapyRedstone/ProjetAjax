@@ -23,13 +23,16 @@ function processimages(txt){
 
 function callbackAuth(txt){
     console.log("Connexion reussiee");
-    var userName = $("div#authUserName").html();
+    var userName = $("input#authUserName").html();
     //Faire les cookies
 }
 
 function auth(){
-    var userName = $("div#authUserName").html();
-    var password = $("div#authPassword").html();
+    var userName = $("input#authUserName").val();
+    var password = $("input#authPassword").val();
+    if($("input#authUserName").val() == "" || $("input#authPassword").val() == ""){
+        return;
+  }
     ajaxRequest('GET','php/request.php/auth',callback,'login='+userName+'&password='+password);
 }
 
@@ -50,6 +53,7 @@ function getComment(idPhoto){
 }
 
 window.onload = function (){
+    document.getElementById("login").onclick = function() {auth()};
     //ajaxRequest('DELETE','/php/request.php/user',callback,'login=azerty')
     //ajaxRequest('DELETE','/php/request.php/comment/1',callback,'login=alex')
     //ajaxRequest('POST','/php/request.php/user',callback,'login=azerty&password=azerty');
