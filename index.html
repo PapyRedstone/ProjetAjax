@@ -8,20 +8,28 @@
 
   </head>
   <body>
+    
     <div class="container" id="topbar">
         <div id="sign">
-          <a href="#" class="button" id="login">
-            <span>Connexion</span>
-          </a>
-          <hr class="vertical">
-          <a href="#" class="button" id="register">
-              <span>S'inscire</span>
-          </a>
+            <form class="form-inline">
+                <input type="text" class="form-control" id="username" placeholder="Nom d'utilisateur">
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                <a href="#" class="button" id="login">
+                    <span>Connexion</span>
+                  </a>
+                  <hr class="vertical">
+                  <a href="#" class="button" id="register">
+                      <span>S'inscire</span>
+                  </a>
+            </form>
+          
         </div>
     </div>
-
-    <div class="container" >      
-      <div id="error" class="row"></div>
+    
+    <div class="container" id="header"> 
+        <div class="jumbotron">
+          <h1>Galerie CIR 2</h1>
+          <p>Bienvenue dans notre galerie. Ici vous trouverez toute sorte d'image. :D</p>
     </div>
 
     <div class="container" id="main">
@@ -143,7 +151,7 @@
     </div>
 
     <script src="js/jquery-1.8.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
     <script src="js/ajax.js"></script>
     <script src="js/event.js"></script>
     <script src="js/gallery.js"></script>

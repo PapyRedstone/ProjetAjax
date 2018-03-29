@@ -21,22 +21,35 @@ body{
 
 }
 
-
 div#sign{    
     float: right;
     height: 100%;
     padding: 0.5em;
     margin-right: 3%;
 }
-div>a,
-div>a:hover,
-div>a:visited,
-div>a:link,
-div>a:active{ 
+
+
+form.form-inline{
+    display: inline-block;
+}
+
+form.form-inline>*{
+    vertical-align: middle;
+}
+
+form>a,
+form>a:hover,
+form>a:visited,
+form>a:link,
+form>a:active{ 
     height: 50px;
     font-size: 1.5em;
     text-decoration: none;
     color: white;
+}
+
+input#password{
+    margin-right: 5px;
 }
 
 hr.vertical{
@@ -88,4 +101,8 @@ div.item>h3{
     text-decoration: underline;
     font-weight: bold;
 
+}
+
+div#header{
+    margin-top: 3%;
 }
