@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Mer 28 Mars 2018 à 08:29
--- Version du serveur :  5.7.21-0ubuntu0.17.10.1
--- Version de PHP :  7.1.15-0ubuntu0.17.10.1
+-- Host: localhost:3306
+-- Generation Time: Mar 29, 2018 at 06:45 AM
+-- Server version: 5.7.21-0ubuntu0.17.10.1
+-- PHP Version: 7.1.15-0ubuntu0.17.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `projetAjax`
+-- Database: `projetAjax`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -34,17 +34,17 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id_comment`, `text`, `id_user`, `id_photo`) VALUES
-(1, 'SLT', 1, 0),
-(2, 'elle est moche', 2, 1);
+(1, 'Me voici', 0, 1),
+(2, 'COUCOOU', 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -52,7 +52,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id_photo`) VALUES
@@ -64,7 +64,7 @@ INSERT INTO `images` (`id_photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -74,20 +74,19 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `userName`, `password`) VALUES
 (0, 'cir', 'cir'),
-(1, 'alex', 'alex'),
 (2, 'adrien', 'adrien');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id_comment`),
@@ -95,42 +94,42 @@ ALTER TABLE `comment`
   ADD KEY `id_photo` (`id_photo`);
 
 --
--- Index pour la table `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id_photo`);
 
 --
--- Index pour la table `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
--- AUTO_INCREMENT pour la table `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT pour la table `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),

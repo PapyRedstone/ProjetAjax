@@ -31,7 +31,16 @@ switch($requestType){
 
    case "comment":
      header('HTTP/1.1 200 OK');
-     echo json_encode($db->execute("SELECT c.text,u.userName FROM comment as c,user as u WHERE c.id_user = u.id_user AND c.id_photo = $requestRessourceNumber"));
+     echo json_encode($db->execute("SELECT c.id_comment,c.text,u.userName FROM comment as c,user as u WHERE c.id_user = u.id_user AND c.id_photo = $requestRessourceNumber"));
+     exit();
+     break;
+
+   case "auth":
+     if($db->execute("SELECT * from user WHERE userName = '".$_GET['login']."' AND password = '".$_GET['password']."'") != array()){
+       header('HTTP/1.1 200 OK');
+     }else{
+       header('HTTP/1.1 401 Unauthorized');
+     }
      exit();
      break;
    }
