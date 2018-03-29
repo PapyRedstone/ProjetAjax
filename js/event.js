@@ -6,23 +6,19 @@ function callback(txt){
 
 function processimages(txt){
     var data = JSON.parse(txt);
+    var ids= [];
     var i=0;
-    var htmltemplate=$("#test").clone().removeAttr('id');
-    console.log(htmltemplate[0]);
-    console.log("wtf");
+    data.forEach(id => {
+        ids[i++]=id.id_photo;
+    });
+    var $htmltemplate=$("#original").clone().removeAttr("id");
+    $("#original").remove();
     var path="img/small/img";
-    //console.log(data);
-    for(var d in data){
-        //console.log(path+data[d].id_photo+".png");
-        console.log(htmltemplate[0]);
-        $("img",htmltemplate).attr("src",path+data[d].id_photo+".png");
-        console.log(htmltemplate[0]);
-        //$("img",htmltemplate).after($("img",htmltemplate).attr("src",path+data[d].id_photo+".png"));
-        //console.log(htmltemplate[0]);
+    for(i=0;i<ids.length;i++){       
+        $htmltemplate.find("img").attr("src",path+ids[i]+".png");
+        $htmltemplate.appendTo($("#data"));
+        $htmltemplate=$htmltemplate.clone();
     }
-    console.log(htmltemplate[0]);
-    $("#data").append(htmltemplate[0]);
-    console.log("terminé");
 }
 
 function callbackAuth(txt){
