@@ -18,7 +18,7 @@
                     <span>Connexion</span>
                   </a>
                   <hr class="vertical">
-                  <a href="#" class="button" id="register">
+                  <a href="#" class="button" id="register" onclick="createUser();">
                       <span>S'inscire</span>
                   </a>
             </form>
@@ -74,6 +74,6 @@
     <!--<script src="js/bootstrap.min.js"></script>-->
     <script src="js/ajax.js"></script>
     <script src="js/event.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="js/gallery.js"></script>
   </body>
 </html>
