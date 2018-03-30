@@ -23,7 +23,7 @@ function submitComment(id) {
 
     if (sName && sText) {
 	//        $.post('index.php', { action: 'accept_comment', name: sName, text: sText, id: id },
-	ajaxRequest('GET','/php/request.php'
+	ajaxRequest('GET','/php/request.php',
             function(data){ 
                 if (data != '1') {
                     $('#comments_list').fadeOut(1000, function () { 
