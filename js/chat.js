@@ -16,7 +16,7 @@ ws.onopen = function(){
 ws.onmessage = function(event){
   var txt = $('#chat-room');
   txt.val(txt.val() + event.data + '\n')
-  //txt.scrollTop(txt.prop('scrollHeight'));
+  txt.scrollTop(txt.prop('scrollHeight'));
 }
 
 ws.onclose = function(){

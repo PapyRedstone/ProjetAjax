@@ -20,8 +20,8 @@ function processimages(txt){
 }
 
 function createUser(){
-    var userName = $("input#authUserName").val();
-    var password = $("input#authPassword").val();
+    var userName = $("#authUserName").val();
+    var password = $("#authPassword").val();
     ajaxRequest('POST','/php/request.php/user',callback,'login='+userName+'&password='+password);
 }
 
@@ -32,8 +32,8 @@ function callbackAuth(txt){
 }
 
 function auth(){
-    var userName = $("input#authUserName").val();
-    var password = $("input#authPassword").val();
+    var userName = $("#authUserName").val();
+    var password = $("#authPassword").val();
     if($("input#authUserName").val() == "" || $("input#authPassword").val() == ""){
         return;
   }

@@ -18,7 +18,7 @@
                     <span>Connexion</span>
                   </a>
                   <hr class="vertical">
-                  <a href="#" class="button" id="register">
+                  <a href="#" class="button" id="register" onclick="createUser();">
                       <span>S'inscire</span>
                   </a>
             </form>
