@@ -113,7 +113,7 @@ div#header{
 }
 
 #original-comment{
-    /*display: none;*/
+    display: none;
 }
 
 .modal {

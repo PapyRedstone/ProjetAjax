@@ -22,6 +22,7 @@ function processimages(txt){
 function callbackComment(txt){
     var data = JSON.parse(txt);
     var $htmltemplate=$("#original-comment").clone().removeAttr("id");
+    $htmltemplate.removeAttr("id");
     $("#original-comment").remove();
     console.log($htmltemplate[0]);
 
