@@ -1,7 +1,7 @@
 'use strict'
 
 var ws = new WebSocket('ws://localhost:12345');
-var login = "name";
+var login = "cir2";
 
 $('#chat-send').unbind('click').click(function(event){
   event.preventDefault();

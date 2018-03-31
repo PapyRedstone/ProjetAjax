@@ -24,7 +24,7 @@ switch($requestType){
      if(isset($requestRessourceNumber)){
        echo json_encode($db->execute("SELECT * FROM images WHERE id_photo = ".$requestRessourceNumber));
      }else{
-       echo json_encode($db->execute("SELECT * FROM images"));
+       echo json_encode($db->execute("SELECT id_photo FROM images"));
      }
      exit();
      break;
@@ -36,10 +36,16 @@ switch($requestType){
      break;
 
    case "auth":
-     if($db->execute("SELECT * from user WHERE userName = '".$_GET['login']."' AND password = '".$_GET['password']."'") != array()){
-       header('HTTP/1.1 200 OK');
+   session_start();
+     //$st=$db->getDB->prepare("SELECT * from user WHERE userName = '".$_GET['login']."' AND password = '".$_GET['password']."'");
+     $st=$db->execute("select COUNT(*) from user where userName='cir' and password='cir'");
+     print_r($_GET);
+     if($st){
+       $_SESSION["username"]=$_GET['login'];
+      header('HTTP/1.1 200 OK');
      }else{
-       header('HTTP/1.1 401 Unauthorized');
+      
+      header('HTTP/1.1 401 Unauthorized'); 
      }
      exit();
      break;

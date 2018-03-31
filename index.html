@@ -11,10 +11,10 @@
     
     <div class="container" id="topbar">
         <div id="sign">
-            <form class="form-inline" method="GET">
+            <form class="form-inline" id="authentication" method="GET">
                 <input type="text" class="form-control" id="authUserName" placeholder="Nom d'utilisateur">
                 <input type="password" class="form-control" id="authPassword" placeholder="Mot de passe">
-                <a href="#" class="button" id="login" onclick="auth();">
+                <a href="#" class="button" id="login" onclick="validateLogin(event);">
                     <span>Connexion</span>
                   </a>
                   <hr class="vertical">
@@ -25,7 +25,8 @@
           
         </div>
     </div>
-    
+    <div id="errors" class="container">
+    </div>
     <div class="container" id="header"> 
         <div class="jumbotron">
           <h1>Galerie CIR 2</h1>
@@ -35,13 +36,11 @@
     <div class="container" id="main">
       <div id="gallery" class="col-sm-8">
           <div class="row" id="data">
-              <div class="col-md-4" id="original">
+              <div class="col-md-4" id="original-img">
                 <div class="item">
-                  <img src="\img\small\img1.png" alt="click to zoom">
+                  <img src="\img\small\img1.png" alt="click to zoom" class="preview" onclick="openImg(1)">
                     <h3>Username</h3>
-                    <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique justo nec congue venenatis. Nam vitae sapien eleifend, mollis dui vitae, ornare quam.
-                        <small class="text-muted">1 like(s)</small>
-                    </p>                      
+                                        
                 </div>
               </div>
             </div> 
@@ -70,10 +69,41 @@
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7" id="modal-container">
+          
+            </div><!-- /col-sm-12 -->
+            <div class="col-md-4" id="comments">
+              <h3>Commentaires</h3>
+              <div class="row" id="original-comment">
+                <div class="col-sm-2">
+                <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+                
+                <div class="col-sm-10">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                <strong>myusername</strong> <span class="text-muted">a dit:</span>
+                </div>
+                <div class="panel-body">
+                Panel content
+                </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+          </div><!-- /row -->
+
+        
+
     <script src="js/jquery-1.8.2.js"></script>
-    <!--<script src="js/bootstrap.min.js"></script>-->
     <script src="js/ajax.js"></script>
     <script src="js/event.js"></script>
+    <script src="js/js.cookie.js"></script>
     <script src="js/chat.js"></script>
   </body>
 </html>
