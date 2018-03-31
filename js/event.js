@@ -24,13 +24,11 @@ function callbackComment(txt){
     var $htmltemplate=$("#original-comment").clone().removeAttr("id");
     $htmltemplate.removeAttr("id");
     $("#original-comment").remove();
-    console.log($htmltemplate[0]);
 
     var parent = $htmltemplate.parent();
     for(var d in data){
         $htmltemplate.find("strong").text(data[d]["userName"]);
         $htmltemplate.find("div.panel-body").text(data[d]["text"]);
-        console.log($htmltemplate.find("div.panel-body"));
         $htmltemplate.appendTo($("#comments"));
         $htmltemplate=$htmltemplate.clone();   
     }
@@ -44,8 +42,6 @@ function createUser(){
 
 function callbackAuth(txt){
     var data = JSON.parse(txt);
-    console.log(data);
-    //console.log("Connexion reussie");
     var userName = $("input#authUserName").html();
     Cookies.set('userName',userName);
 }
@@ -159,7 +155,6 @@ function validateLogin(event)
           xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(unescape(encodeURIComponent(login + ':' + password))))
         }
       });
-    console.log(xhr);
 
     // Add the onload function.
     xhr.onload = function ()
